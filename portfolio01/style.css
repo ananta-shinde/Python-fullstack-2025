@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+
+*{
+    margin: 0;
+    padding:0;
+
+}
+
+body{
+    font-family: "Poppins", sans-serif;
+    position: relative;
+}
+
+nav{
+    padding: 0 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items:center ;
+    min-height:  75px;
+}
+
+nav ul{
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li{
+    margin-right: 25px;
+}
+
+.btn{
+    border: 0;
+    font-size: 1.2em;
+    padding: 10px 30px;
+}
+
+.btn-primary{
+    background-color: #6E07F3;
+    color: white;
+}
+
+.btn-outline-primary{
+    border: 2px solid #6E07F3;
+    background-color: transparent;
+    color: #6E07F3;
+
+}
+
+.bg-primary{
+    background-color:#6E07F3 ;
+}
+
+.text-primary{
+    color: #6E07F3;
+}
+
+.text-white{
+    color: white;
+}
+
+#hero{
+    min-height: 100vh;
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#hero img{
+    width: 250px;
+    height: 250px;
+}
+
+.display-6{
+    font-size: 1.8em;
+}
+.display-3{
+    font-size: 2.5em;
+}
+.display-1{
+    font-size: 3em;
+}
+
+.fw-bold{
+    font-weight: bold;
+}
+
+.fw-light{
+    font-weight: 100;
+}
+
+#intro{
+    height:90vh;
+}
+
+
+/* flex classes */
+.d-flex{
+    display: flex;
+}
+
+.flex-wrap{
+    flex-wrap: wrap;
+}
+
+.justify-content-start{
+    justify-content: start;
+}
+.justify-content-center{
+    justify-content: center;
+}
+.justify-content-end{
+    justify-content: end;
+}
+.justify-content-around{
+    justify-content: space-around;
+}
+.justify-content-between{
+    justify-content: space-between;
+}
+.justify-content-evenly{
+    justify-content: space-evenly;
+}
+
+.align-items-start{
+    align-items: start;
+}
+.align-items-end{
+    align-items: end;
+}
+.align-items-center{
+    align-items: center;
+}
+
+.flex-direction-row{
+    flex-direction: row;
+}
+
+.flex-direction-column{
+    flex-direction: column;
+}
+
+.w-25{
+    width: 25%;
+}
+.w-50{
+    width: 50%;
+}
+.w-75{
+    width: 75%;
+}
+.w-100{
+    width: 100%;
+}
+
+.text-end{
+    text-align: end;
+}
+.text-center{
+    text-align: center;
+}
+.text-start{
+    text-align: start;
+}
+
+.m-1{
+    margin: 1rem;
+}
+.m-2{
+    margin: 1.2rem;
+}
+.m-3{
+    margin: 1.5rem;
+}
+.m-4{
+    margin: 2rem;
+}
+.m-5{
+    margin: 2.5rem;
+}
+
+.container{
+    padding: 0 10%;
+}
+
+.flex-1{
+    flex: 1;
+}
+
+#services{
+    height: 75vh;
+    /* padding-top:100px ; */
+    position: relative;
+   
+}
+
+#services .card{
+    position: relative;
+    top:-100px
+}
+
+#my-work{
+    height: 75vh;
+}
+
+#my-work .card{
+   width: 240px;
+   height: 300px;
+   margin: 20px;
+   background-image: url(https://graphicsfamily.com/wp-content/uploads/edd/2021/12/Free-Business-Card-Design-Gold-And-Black-Colors-1180x885.jpg);
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center;
+   
+}
+
+#my-work .card img{
+    width: 100%;
+   
+    object-fit: cover;
+}
+
+
+.card{
+    padding: 5%;
+    background-color: white;
+    border: 1px solid rgb(173, 175, 178);
+}
+
+.list-unstyled{
+    list-style-type: none;
+}
+
+
+
