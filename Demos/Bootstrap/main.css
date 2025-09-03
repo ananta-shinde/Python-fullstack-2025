@@ -1,0 +1,11 @@
+
+nav{
+    height: 90px;
+    border-bottom: 1px solid lightslategray;
+}
+
+.menu-style-1{
+    border: 1px solid lightslategray;
+    padding: 5px 5px;
+    border-radius: 25px;
+}
