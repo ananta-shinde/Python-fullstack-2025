@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .side-nav{
+            position: absolute;
+            background-color: darkslategray;
+            color: white;
+            width:20% ;
+            height: 100vh;
+            margin-left: -25%;
+        }
+    </style>
+</head>
+<body>
+    <div id="side-nav" class="side-nav">
+        <button onclick="closeNav()">close</button>
+        <ul>
+            <li>item</li>
+            <li>item</li>
+            <li>item</li>
+            <li>item</li>
+            <li>item</li>
+            <li>item</li>
+        </ul>
+    </div>
+    <button onclick="showSideNav()">show side nav</button>
+   <script>
+         
+
+         function showSideNav(){
+
+            var sideNav = document.getElementById("side-nav")
+            sideNav.style.marginLeft = "0%"
+            
+         }
+
+         function closeNav(){
+            var sideNav = document.getElementById("side-nav")
+            sideNav.style.marginLeft = "-25%"
+         }
+   </script>
+</body>
+</html>

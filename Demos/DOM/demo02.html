@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .comment-container{
+            padding: 50px;
+            background-color: lightsteelblue;
+            
+        }
+        .comment-item{
+            background-color: white;
+            padding: 1rem;
+            margin: 0.5rem 0;
+        }
+        .comment-item p{
+            margin: 1rem 0;
+            font-size: 1.2rem;
+        }
+        .comment-item input{
+            width: 75%;
+            padding: 1rem;
+        }
+        .comment-item button{
+            border: 0;
+            background-color: black;
+            color: white;
+            padding: 1rem 2rem;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="comment-container">
+        <div id="comment-list">
+
+        </div>
+        <div class="comment-item">
+            <p style="display: block;">Reply this post :</p>
+            <input type="text" placeholder="your comment..." name="comment-text" />
+            <button onclick="postComment()">post</button>
+        </div>
+    </div>
+    <script>
+        
+        function postComment(){
+            var comment = document.getElementsByName("comment-text")[0].value
+            var commentItem = document.createElement("div")
+                commentItem.classList.add("comment-item")
+                var commentUser = document.createElement("h2")
+                commentUser.classList.add("comment-user")
+                commentUser.innerText = "Ananta Shinde"
+                var commentText = document.createElement("p")
+                commentUser.classList.add("comment-text")
+                commentText.innerText = comment
+
+                commentItem.appendChild(commentUser)
+                commentItem.appendChild(commentText)
+
+                document.getElementById("comment-list").appendChild(commentItem)
+        }
+       
+       
+        console.log(commentStructure)
+    </script>
+</body>
+</html>

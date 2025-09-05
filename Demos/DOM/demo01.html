@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <title>DOM Demos</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <h1>This is first heading</h1>
+    <label >Choose text color :</label>
+    <input type="color"  />
+    <label>Choose background color :</label>
+    <input type="color"  />
+    <button onclick="changeColor()">update color</button>
+    <script>
+       function changeColor(){
+           var textColor = document.getElementsByTagName("input")[0].value
+           var bgColor = document.getElementsByTagName("input")[1].value
+           document.getElementsByTagName("h1")[0].style.color = textColor
+           document.getElementsByTagName("h1")[0].style.backgroundColor = bgColor
+       }
+        
+    </script>
+</body>
+</html>

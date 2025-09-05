@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <title>Document</title>
+    <style>
+
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        .container{
+            padding: 5% 10%;
+        }
+        .question{
+            padding: 1rem 0.5rem;
+            background-color: lightslategray;
+            color: white;
+            cursor: pointer;
+        }
+        .answer{
+            padding: 15px;
+            font-size: 1.2rem;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="question" name = "1">
+            <h4>Which career path should I take ?</h4>
+        </div>
+        <div class="answer" name="1">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis vitae unde, accusantium incidunt temporibus possimus ut perspiciatis, facere, fugit eaque non fuga. In nesciunt voluptatum, explicabo incidunt eum facilis hic!
+        </div>
+        <div class="question " name="2">
+            <h4>Which career path should I take ?</h4>
+        </div>
+        <div class="answer" name="2">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis vitae unde, accusantium incidunt temporibus possimus ut perspiciatis, facere, fugit eaque non fuga. In nesciunt voluptatum, explicabo incidunt eum facilis hic!
+        </div>
+    </div>
+    <script>
+        var questions = document.getElementsByClassName("question")
+        console.log(questions)
+        // questions.forEach(question => {
+        //     question.addEventListener("click", toggleQuestion)
+        // });
+        for (const question in questions) {
+            question.addEventListener("click", toggleQuestion)
+        }
+        
+        
+        function toggleQuestion(event){
+            console.log(event)
+            var answer = document.getElementsByName("name")[1]
+            if(answer.style.display == "none"){
+            answer.style.display = "block"
+            }else{
+                answer.style.display = "none"
+            }
+        }
+    </script>
+</body>
+</html>
