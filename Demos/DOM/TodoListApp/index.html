@@ -8,12 +8,15 @@
 
 </head>
 <body>
-    <form>
-        <input id="taskId" type="number" placeholder="enter task id" required/>
-        <input id="description" type="text" placeholder="enter task description" required/>
-        <button onclick="addNewTask()">Add</button>
+    <div class="container p-4">
+    <form class="bg-light p-4 shadow offset-md-3 col-md-6">
+        <h4>Add new task here</h4>
+        <!-- <input class="form-control my-2" id="taskId" type="number" placeholder="enter task id" name="id" required/> -->
+        <input class="form-control my-2" id="description" type="text" placeholder="enter task description" name="description" required/>
+        <button class="btn btn-dark w-100" onclick="addNewTask()">Add</button>
     </form>
-    <button onclick="displayTaskList()">view</button>
+    <ul id="task-list" class="list-unstyled"></ul>
+    </div>
     <script src="main.js"></script>
 </body>
 </html>
