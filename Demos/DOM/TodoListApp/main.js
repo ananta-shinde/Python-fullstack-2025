@@ -27,13 +27,19 @@ function displayTaskList(event){
         col2.classList.add("col")
         col2.innerHTML = task.status
         var col3 = document.createElement("div")
-        col3.classList.add("col-2")
+        col3.classList.add("col-3")
         var deleteBtn = document.createElement("button")
         deleteBtn.innerText = "delete"
         deleteBtn.className = "btn btn-danger"
         deleteBtn.name = task.id
         deleteBtn.addEventListener("click",deleteTask)
         col3.appendChild(deleteBtn)
+        var markbtn = document.createElement("button")
+        markbtn.innerText = "mark as done"
+        markbtn.className = "btn btn-success"
+        markbtn.name = task.id
+        markbtn.addEventListener("click",markCompleted)
+        col3.appendChild(markbtn)
         newRow.appendChild(col1)
         newRow.appendChild(col2)
         newRow.appendChild(col3)
@@ -53,6 +59,14 @@ function addNewTask(){
     localStorage.setItem("taskList",JSON.stringify(taskList))
 }
 //update task
+
+function markCompleted(event){
+    var id = event.target.name
+    var taskindex = getTaskIndexById(id);
+    taskList[taskindex].status = "done"
+    localStorage.setItem("taskList",JSON.stringify(taskList))
+    location.reload()
+}
 
 // delete task
 function deleteTask(event){
