@@ -10,10 +10,10 @@
     <div class="container">
         <div class="row p-4">
             <div class="col-6 offset-3">
-                <form class="my-5 bg-success text-white p-4 shadow">
+                <form class="my-5 bg-success text-white p-4 shadow" onsubmit="formSubmit(event)">
                     <h4>Please Login to your account</h4>
-                    <input class="form-control my-3" type="email" placeholder="Email"/>
-                    <input class="form-control my-3" type="password" placeholder="password"/>
+                    <input class="form-control my-3" type="email" placeholder="Email" name="email"/>
+                    <input class="form-control my-3" type="password" placeholder="password" name="password"/>
                     <button class="btn btn-dark w-100" type="submit">Sign In</button>
                     <div class="my-4 text-center">
                         <span>Don't have account?<a class="text-white text-decoration-none fw-bold" href="signup.html">Register</a></span>
@@ -21,5 +21,33 @@
                 </form>
             </div>
         </div>
+        <script>
+             var userList = []
+            if(localStorage.getItem("users"))
+            {
+                userList = JSON.parse(localStorage.getItem("users"))
+            }
+            function formSubmit(event){
+                event.preventDefault();
+                const formdata = new FormData(event.target)
+                user= {}
+                user.email = formdata.get("email")
+                user.password = formdata.get("password")
+                userList.forEach(u => {
+                    if(u.email == user.email){
+                        if(u.password == user.password){
+                            window.location.href = "index.html"
+                        }else{
+                            alert("invalid creds")
+                        }
+                        return;
+                    }else{
+                        alert("invalid creds")
+                    }
+                });
+            }
+
+            
+        </script>
 </body>
 </html>

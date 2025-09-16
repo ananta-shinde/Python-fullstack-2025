@@ -10,19 +10,38 @@
    <div class="container">
         <div class="row p-4">
             <div class="col-6 offset-3">
-                <form class="my-5 bg-success text-white p-4 shadow">
+                <form id="signupForm" class="my-5 bg-success text-white p-4 shadow" onsubmit="formSubmit(event)">
                     <h4>Please Create your account below</h4>
-                    <input class="form-control my-3" type="text" placeholder="Full Name"/>
-                    <input class="form-control my-3" type="email" placeholder="Email"/>
-                    <input class="form-control my-3" type="password" placeholder="password"/>
+                    <input class="form-control my-3" type="text" placeholder="Full Name" name="name"/>
+                    <input class="form-control my-3" type="email" placeholder="Email" name="email"/>
+                    <input class="form-control my-3" type="password" placeholder="password" name="password"/>
                     <button class="btn btn-dark w-100" type="submit">Create My Account</button>
                     <div class="my-4 text-center">
                         <span>already have account?<a class="text-white text-decoration-none fw-bold" href="signin.html">Signin</a></span>
                     </div>
-                   
                 </form>
             </div>
         </div>
    </div>
 </body>
+<script>
+    var userList = []
+    if(localStorage.getItem("users"))
+    {
+        userList = JSON.parse(localStorage.getItem("users"))
+    }
+    function formSubmit(event){
+        event.preventDefault();
+        const formdata = new FormData(event.target)
+        var user = {}
+        user.name = formdata.get("name")
+        user.email = formdata.get("email")
+        user.password = formdata.get("password")
+        userList.push(user)
+        console.log(userList)
+        localStorage.setItem("users",JSON.stringify(userList))
+        window.location.href = "signin.html"
+
+    }
+</script>
 </html>
