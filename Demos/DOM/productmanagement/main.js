@@ -23,21 +23,40 @@ function navbar(){
     </div> `
 }
 
-function addProductFrom(){
-    return `<div class="container">
-        <form class="bg-light p-4 shadow" onsubmit ="handleSubmit(event)">
-        <h4 class="text-muted">Add New Product Details</h4>
-            <input class="form-control" type="text" placeholder="product name" name="name"/>
-            <textarea class="form-control" type="text" placeholder="product description" name="description"></textarea>
-            <select class="form-control" name="category">
+function addProductFrom(product){
+   
+    var response = `<div class="container">
+    <form class="bg-light p-4 shadow" onsubmit ="handleSubmit(event)">
+    <h4 class="text-muted">Add New Product Details</h4>
+        <input class="form-control" type="text" placeholder="product name" name="name" value=""/>
+        <textarea class="form-control" type="text" placeholder="product description" name="description"></textarea>
+        <select class="form-control" name="category">
+        <option>-- select category --</option>
+            <option>Electronics</option>
+            <option>Clothing</option>
+        </select>
+        <input class="form-control" type="number" placeholder="product mrp" name="mrp"/>
+        <input class="btn btn-dark" type="submit" value="save product"/>
+    </form>
+</div>`
+
+   if(product != undefined){
+   response = `<div class="container">
+    <form class="bg-light p-4 shadow" onsubmit ="handleSubmit(event)">
+    <h4 class="text-muted">Add New Product Details</h4>
+        <input class="form-control" type="text" placeholder="product name" name="name" value="${product.name}"/>
+        <textarea class="form-control" type="text" placeholder="product description" name="description" >${product.description}</textarea>
+        <select class="form-control" name="category" value="${product.category}" >
             <option>-- select category --</option>
-                <option>Electronics</option>
-                <option>Clothing</option>
-            </select>
-            <input class="form-control" type="number" placeholder="product mrp" name="mrp"/>
-            <input class="btn btn-dark" type="submit" value="save product"/>
-        </form>
-    </div>`
+            <option>Electronics</option>
+            <option>Clothing</option>
+        </select>
+        <input class="form-control" type="number" placeholder="product mrp" name="mrp" value="${product.mrp}"/>
+        <input class="btn btn-dark" type="submit" value="save product"/>
+    </form>
+</div>`
+   }
+    return response
 }
 
 function viewProduct(){
@@ -52,6 +71,7 @@ function viewProduct(){
       <th scope="col">description</th>
       <th scope="col">category</th>
       <th scope="col">mrp</th>
+      <th scope="col">Action</th>
       
     </tr>
   </thead>
@@ -108,6 +128,33 @@ function loadTableData(){
         var tabledata = document.createElement("td")
         tabledata.innerText = p.mrp
         tablerow.appendChild(tabledata)
+        var tabledata = document.createElement("td")
+        var viewBtn = document.createElement("button")
+        viewBtn.innerText = "view"
+        viewBtn.className = "btn btn-info"
+        viewBtn.setAttribute("name",p.id)
+        viewBtn.addEventListener("click",productClick)
+        tabledata.appendChild(viewBtn)
+        tablerow.appendChild(tabledata)
         tableData.appendChild(tablerow)
     });
+}
+
+function getProductById(id){
+    var product = undefined
+    productList.forEach(p=>{
+        
+        if(p.id == id){
+            product = p
+        }
+    })
+    return product
+}
+
+function productClick(event){
+    var productId = event.target.name
+    var product = getProductById(productId)
+    var content = mainContent.innerHTML
+    content=content+`<div class="popup">${addProductFrom(product)}</div>`
+    mainContent.innerHTML =content
 }
