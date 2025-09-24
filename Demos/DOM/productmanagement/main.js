@@ -42,14 +42,15 @@ function addProductFrom(product){
 
    if(product != undefined){
    response = `<div class="container">
-    <form class="bg-light p-4 shadow" onsubmit ="handleSubmit(event)">
-    <h4 class="text-muted">Add New Product Details</h4>
+    <form class="bg-light p-4 shadow" onsubmit ="handleUpdate(event)">
+    <h4 class="text-muted">Product Details</h4>
+        <input type="hidden" name="id" value="${product.id}"/>
         <input class="form-control" type="text" placeholder="product name" name="name" value="${product.name}"/>
         <textarea class="form-control" type="text" placeholder="product description" name="description" >${product.description}</textarea>
         <select class="form-control" name="category" value="${product.category}" >
-            <option>-- select category --</option>
-            <option>Electronics</option>
-            <option>Clothing</option>
+            <option value="">-- select category --</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Clothing">Clothing</option>
         </select>
         <input class="form-control" type="number" placeholder="product mrp" name="mrp" value="${product.mrp}"/>
         <input class="btn btn-dark" type="submit" value="save product"/>
@@ -109,6 +110,22 @@ function handleSubmit(event){
 
 }
 
+function handleUpdate(event){
+    event.preventDefault()
+    const formdata = new FormData(event.target)
+    var productId = formdata.get("id")
+    productList.forEach(p=>{
+        if(p.id == productId){
+            p.name = formdata.get("name")
+            p.description = formdata.get("description")
+            p.category = formdata.get("category")
+            p.mrp = formdata.get("mrp")
+        }
+    })
+    localStorage.setItem("products",JSON.stringify(productList))
+    loadViewProduct()
+}
+
 function loadTableData(){
     var tableData = document.getElementById("table-data")
     productList.forEach(p => {
@@ -154,7 +171,7 @@ function getProductById(id){
 function productClick(event){
     var productId = event.target.name
     var product = getProductById(productId)
-    var content = mainContent.innerHTML
-    content=content+`<div class="popup">${addProductFrom(product)}</div>`
-    mainContent.innerHTML =content
+    // var content = mainContent.innerHTML
+    // content=content+`<div class="popup">${addProductFrom(product)}</div>`
+    mainContent.innerHTML =addProductFrom(product)
 }
