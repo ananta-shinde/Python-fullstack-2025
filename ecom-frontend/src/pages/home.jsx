@@ -1,4 +1,5 @@
-import ProductSlider from "../components/productslider";
+
+import ProductSlider from "../components/productslider"
 import BannerSlider from "../components/bannerslider";
 import Navbar from "../components/navbar";
 import Titlebar from "../components/titlebar";
