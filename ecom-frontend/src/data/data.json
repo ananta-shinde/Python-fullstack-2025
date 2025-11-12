@@ -31,12 +31,46 @@
         {
         "id":1,
         "name":"Electronics",
-        "thumbnail":""
+        "thumbnail":"",
+        "sub-categories":[
+            {
+                "id":1,
+                "name":"Mobiles",
+                "thumbnail":""
+            },
+            {
+                "id":1,
+                "name":"Tablets",
+                "thumbnail":""
+            },
+            {
+                "id":1,
+                "name":"Laptop & PC",
+                "thumbnail":""
+            }
+        ]
     },
         {
         "id":1,
         "name":"Electronics",
-        "thumbnail":""
+        "thumbnail":"",
+        "sub-categories":[
+            {
+                "id":1,
+                "name":"Mobiles",
+                "thumbnail":""
+            },
+            {
+                "id":1,
+                "name":"Tablets",
+                "thumbnail":""
+            },
+            {
+                "id":1,
+                "name":"Laptop & PC",
+                "thumbnail":""
+            }
+        ]
     },
         {
         "id":1,

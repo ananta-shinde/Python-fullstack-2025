@@ -5,6 +5,7 @@ import Navbar from "../components/navbar";
 import Titlebar from "../components/titlebar";
 import CategoryBar from "../components/category/categorybar";
 import CategorySideNav from "../components/category/cartegorysidenav";
+import CategoryMegaMenu from "../components/category/categoryMegaMenu";
 
 const Home = () => {
     return (
@@ -18,6 +19,7 @@ const Home = () => {
                 </div>
                 <div className="col-9">
                             <Navbar/>
+                            <CategoryMegaMenu></CategoryMegaMenu>
                     <CategoryBar/>
                     {/*<CategoryBar/>
                     <HeroBanerSlider/> */}
