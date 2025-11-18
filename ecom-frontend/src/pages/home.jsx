@@ -6,6 +6,7 @@ import Titlebar from "../components/titlebar";
 import CategoryBar from "../components/category/categorybar";
 import CategorySideNav from "../components/category/cartegorysidenav";
 import CategoryMegaMenu from "../components/category/categoryMegaMenu";
+import Counter from "../components/counter";
 
 const Home = () => {
     return (
@@ -20,6 +21,7 @@ const Home = () => {
                 <div className="col-9">
                             <Navbar/>
                             <CategoryMegaMenu></CategoryMegaMenu>
+                            <Counter/>
                     <CategoryBar/>
                     {/*<CategoryBar/>
                     <HeroBanerSlider/> */}

@@ -32,7 +32,7 @@
         "id":1,
         "name":"Electronics",
         "thumbnail":"",
-        "sub-categories":[
+        "subCategories":[
             {
                 "id":1,
                 "name":"Mobiles",
@@ -54,7 +54,7 @@
         "id":1,
         "name":"Electronics",
         "thumbnail":"",
-        "sub-categories":[
+        "subCategories":[
             {
                 "id":1,
                 "name":"Mobiles",
