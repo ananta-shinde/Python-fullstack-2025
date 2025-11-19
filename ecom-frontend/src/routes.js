@@ -1,19 +1,27 @@
 import {createBrowserRouter} from 'react-router'
 import Home from './pages/home';
+import Cart from './pages/cart';
+import BaseTemplate from './components/templates/base';
 const router = createBrowserRouter([
     {
         path:"/",
+        element:<BaseTemplate/>,
         children:[
             {
                 path:"",
                 element:<Home/>,
             },
             {
-            path:"login",
-            element:<h1>Login page</h1>
-        }]
+                path:"cart",
+                element:<Cart/>
+            }
+    ]
     },
-    {path:"/home", element:<h1>Home Page</h1>}
+    {
+        path:"/login",
+        element:<h1>Login page</h1>
+        }
+    
 ])
 
 export default router;

@@ -11,8 +11,6 @@ import Counter from "../components/counter";
 const Home = () => {
     return (
         <>
-
-        <Titlebar/>
         <div className="container">
             <div className="row">
                 <div className="col-2">

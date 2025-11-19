@@ -10,7 +10,7 @@ const Titlebar = () => {
                         <Link className="nav-link">Wishlist</Link>
                     </li>
                     <li className="nav-item"> <Link className="nav-link">Account</Link></li>
-                    <li className="nav-item"> <Link className="nav-link">Cart</Link></li>
+                    <li className="nav-item"> <Link className="nav-link" to="/cart">Cart</Link></li>
                 </ul>
             </div>
         </div>
