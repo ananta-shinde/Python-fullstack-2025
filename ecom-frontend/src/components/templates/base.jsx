@@ -6,7 +6,10 @@ import { Outlet } from "react-router";
 const BaseTemplate = (props) => {
     return ( <>
       <Titlebar/>
-        <Outlet/>
+      <div style={{minHeight:"80vh"}}>
+          <Outlet/>
+      </div>
+        
       <Footer/>
     </> );
 }

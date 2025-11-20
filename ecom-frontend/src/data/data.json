@@ -3,7 +3,9 @@
         {
          "id":1,
          "name":"my first product",
-         "image_url" :"demo"
+         "description":"description",
+         "image_url" :"demo",
+         "mrp":10000
         },
         {
          "id":1,
