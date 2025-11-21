@@ -24,7 +24,7 @@ const CartProductCard = (props) => {
         <Counter count={count} setCount={setCount}/>
       </div>
       <div className="col">
-        <h3>{subTotal}</h3>
+        <h3 ref={props.ref} id={subTotal}>{subTotal}</h3>
       </div>
     </div>
   </div> );

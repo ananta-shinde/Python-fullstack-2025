@@ -1,16 +1,33 @@
+import { useEffect, useRef, useState } from "react";
 import CartProductCard from "../components/CartProductCard";
 import Counter from "../components/counter";
 import BaseTemplate from "../components/templates/base";
 import Titlebar from "../components/titlebar";
 
 const Cart = () => {
+    const [total,setTotal] = useState(0);
+    const productRef = useRef([])
+    const addProductRef =(element)=>{
+          productRef.current.push(element)
+    }
+    const calculateTotal = ()=>{
+         var total = 0;
+         productRef.current.forEach(element => {
+            total = total + element.id
+         });
+         return total
+    }
+    useEffect(()=>{
+      console.log(productRef)
+      setTotal(calculateTotal())
+    },[])
     return ( <div className="container">
       <div className="row p-4">
         
         <div className="col">
         <h4 className="text-muted">Products(5)</h4>
         <hr />
-          <CartProductCard product={ {
+          <CartProductCard ref={addProductRef} total={total} setTotal={setTotal} product={ {
          "id":1,
          "name":"my first product",
          "description":"description",
@@ -22,7 +39,7 @@ const Cart = () => {
         <div className="col-3">
           <h4 className="text-muted">Summary</h4>
           <hr />
-          <p>Sub Total :</p>
+          <p>Total :{total}</p>
           <p>Discount :</p>
           <p>Shiping charges :</p>
           <hr></hr>
