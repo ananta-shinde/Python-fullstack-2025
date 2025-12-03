@@ -11,24 +11,8 @@ import Counter from "../components/counter";
 const Home = () => {
     return (
         <>
-        <div className="container">
-            <div className="row">
-                <div className="col-2">
-                    <CategorySideNav/>
-                </div>
-                <div className="col-9">
-                            <Navbar/>
-                            <CategoryMegaMenu></CategoryMegaMenu>
-                            <Counter/>
-                    <CategoryBar/>
-                    {/*<CategoryBar/>
-                    <HeroBanerSlider/> */}
-                    <BannerSlider/>
-                    <ProductSlider/>
-                </div>
-            </div>
-        </div>
-        
+            <BannerSlider/>
+            <ProductSlider/>
         </> 
      );
 }
