@@ -1,7 +1,9 @@
 package ProductManagement;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 class Offer{
 	private int id;
@@ -41,6 +43,34 @@ class Category{
 	private int id;
 	private String name;
 	private String description;
+	
+	public Category(int id,String name,String description) {
+		// TODO Auto-generated constructor stub
+		this.id = id;
+		this.name = name;
+		this.description = description;
+	}
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	
 }
 
 class StockManager{
@@ -62,9 +92,13 @@ class Product{
 	private String thumbnail;
 	private Brand brand;
 	
-	public Product(int id) {
+	public Product(int id,String name,double mrp,Brand brand,Category category) {
 		// TODO Auto-generated constructor stub
-		
+		this.id = id;
+		this.category = category;
+		this.name = name;
+		this.mrp = mrp;
+		this.brand = brand;
 	}
 	
 	
@@ -134,6 +168,11 @@ class Product{
 class ProductManager{
 	private List<Product> list;
 	
+	public ProductManager() {
+		// TODO Auto-generated constructor stub
+		list = new ArrayList<Product>();
+	}
+	
 	public int getNextProductId() {
 		return list.size()+1;
 	}
@@ -159,7 +198,100 @@ class ProductManager{
 		}
 	}
 	
+	public void createNewProduct() {
+		
+		CategoryManager categoryManager = CategoryManager.getInstance();
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("enter product name");
+		String name=scanner.next();
+		System.out.println("choose from following categories :");
+		categoryManager.printAllCategories();
+		System.out.println("enter product's category id :");
+		int categoryId=scanner.nextInt();
+		
+		Category category = categoryManager.getCategory(categoryId);
+		
+		System.out.println("enter product mrp");
+		double mrp=scanner.nextDouble();
+		
+		Product product = new Product(getNextProductId(), name, mrp,null,category);
+		list.add(product);
+	}
 	
+	
+	
+	
+}
+
+class CategoryManager{
+	private List<Category> list;
+	Static CategoryManager categoryManager;
+	
+	priavte CategoryManager() {
+		// TODO Auto-generated constructor stub
+		list = new ArrayList<Category>();
+	}
+	
+	public static CategoryManager getInstance() {
+		if(categoryManager == null) {
+			
+		}
+		return new CategoryManager();
+	}
+	
+	public int getNextCategoryId() {
+		return list.size()+1;
+	}
+	
+	public void createNewCategory() {
+		
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("enter category name");
+		String name=scanner.next();
+		System.out.println("enter category description");
+		String description=scanner.next();
+		Category category = new Category(getNextCategoryId(), name, description);
+		list.add(category);
+	}
+	
+	public Category getCategory(int id){
+		for (Category category : list) {
+			if(category.getId() == id) {
+				return category;
+			}
+		}
+		return null;
+	}
+	
+	public void addCategory(Category c) {
+		list.add(c);
+	}
+	
+	public void deleteCategory(int id) {
+		
+		for (Category p : list) {
+			if(p.getId() == id) {
+				list.remove(p);
+			}
+		}
+	}
+	
+	
+	
+	public void updateName(int id, String newName) {
+		for (Category c : list) {
+			if(c.getId() == id) {
+				c.setName(newName);
+			}
+		}
+	}
+
+	public void printAllCategories() {
+		// TODO Auto-generated method stub
+		for (Category category : list) {
+			System.out.println(category.getId()+" "+category.getName());
+		}
+	}
 	
 	
 	
@@ -168,9 +300,24 @@ class ProductManager{
 public class App {
 	
 	public static void main(String[] args) {
-		ProductManager pm = new ProductManager();
-		Product product = new Product(pm.getNextProductId());
-		pm.addProduct(null);
+		ProductManager productManager = new ProductManager();
+		CategoryManager categoryManager = CategoryManager.getInstance();
+		
+		//create new category
+		categoryManager.createNewCategory();
+		categoryManager.createNewCategory();
+		
+		//Print list of categories
+		categoryManager.printAllCategories();
+		
+		
+		
+		// add new product
+		productManager.createNewProduct();
+		
+		
+		
+		
 	}
 
 }
