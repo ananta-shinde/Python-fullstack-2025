@@ -1,5 +1,9 @@
 package ProductManagement;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -225,18 +229,18 @@ class ProductManager{
 
 class CategoryManager{
 	private List<Category> list;
-	Static CategoryManager categoryManager;
+	static private CategoryManager categoryManager;
 	
-	priavte CategoryManager() {
+	private CategoryManager() {
 		// TODO Auto-generated constructor stub
 		list = new ArrayList<Category>();
 	}
 	
 	public static CategoryManager getInstance() {
 		if(categoryManager == null) {
-			
+			 categoryManager=new CategoryManager();
 		}
-		return new CategoryManager();
+		return categoryManager;
 	}
 	
 	public int getNextCategoryId() {
@@ -251,7 +255,18 @@ class CategoryManager{
 		System.out.println("enter category description");
 		String description=scanner.next();
 		Category category = new Category(getNextCategoryId(), name, description);
-		list.add(category);
+//		list.add(category);
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection conn =DriverManager.getConnection("jdbc:mysql://localhost:3306/ecom_db","root","Demo@123");
+			Statement statement = conn.createStatement();
+			statement.execute("insert into categories values(null,'"+name+"','"+description+"',null,null)");
+			conn.close();
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	public Category getCategory(int id){
@@ -288,8 +303,19 @@ class CategoryManager{
 
 	public void printAllCategories() {
 		// TODO Auto-generated method stub
-		for (Category category : list) {
-			System.out.println(category.getId()+" "+category.getName());
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection conn =DriverManager.getConnection("jdbc:mysql://localhost:3306/ecom_db","root","Demo@123");
+			Statement statement = conn.createStatement();
+			ResultSet result =statement.executeQuery("select * from categories");
+			while(result.next()) {
+				System.out.println(result.getInt("id")+" "+result.getString("name"));
+			}
+			conn.close();
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
 		}
 	}
 	
@@ -303,9 +329,15 @@ public class App {
 		ProductManager productManager = new ProductManager();
 		CategoryManager categoryManager = CategoryManager.getInstance();
 		
+		
+		
+		
+		
+		
+		
 		//create new category
-		categoryManager.createNewCategory();
-		categoryManager.createNewCategory();
+//		categoryManager.createNewCategory();
+//		categoryManager.createNewCategory();
 		
 		//Print list of categories
 		categoryManager.printAllCategories();
@@ -313,7 +345,7 @@ public class App {
 		
 		
 		// add new product
-		productManager.createNewProduct();
+//		productManager.createNewProduct();
 		
 		
 		
