@@ -329,12 +329,6 @@ public class App {
 		ProductManager productManager = new ProductManager();
 		CategoryManager categoryManager = CategoryManager.getInstance();
 		
-		
-		
-		
-		
-		
-		
 		//create new category
 //		categoryManager.createNewCategory();
 //		categoryManager.createNewCategory();
