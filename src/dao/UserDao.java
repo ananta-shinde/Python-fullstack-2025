@@ -11,10 +11,17 @@ import model.User;
 
 public class UserDao {
 	
+	  Connection conn;
+	  
+	  
+	  public UserDao(){
+		  conn = DbConfig.getConnection();
+	  }
+	  
 	  public long create(User u) {
 		 try {
-			 Connection conn  = DbConfig.getConnection();
-//			 Statement stmt = conn.createStatement();
+			
+
 			 PreparedStatement stmt = conn.prepareStatement("insert into users (name,email,password) values (?,?,?)");
 			 stmt.setString(1, u.getName());
 			 stmt.setString(2, u.getEmail());
@@ -38,8 +45,8 @@ public class UserDao {
 	}
 	public User getUser(String email) {	
 		try {
-			 Connection conn  = DbConfig.getConnection();
-//			 Statement stmt = conn.createStatement();
+			 
+
 			 PreparedStatement stmt = conn.prepareStatement("select * from users where email = ?");
 			 stmt.setString(1, email);
 			 ResultSet result = stmt.executeQuery();
@@ -62,12 +69,12 @@ public class UserDao {
 	
 	public void restPassword(int id,String password) {
 		try {
-			Connection conn  = DbConfig.getConnection();
-//			 Statement stmt = conn.createStatement();
-			 PreparedStatement stmt = conn.prepareStatement("update users where id=? set password =?");
-			 stmt.setInt(1, id);
-			 stmt.setString(2,password);
-			 stmt.execute();
+			
+
+			 PreparedStatement stmt = conn.prepareStatement("update users  set password =? where id=?");
+			 stmt.setInt(2, id);
+			 stmt.setString(1,password);
+			 stmt.executeUpdate();
 		}
 		catch (Exception e) {
 			// TODO: handle exception
